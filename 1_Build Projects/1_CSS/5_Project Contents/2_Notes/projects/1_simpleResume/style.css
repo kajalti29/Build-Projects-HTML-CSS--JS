@@ -1,0 +1,124 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Resume Layout */
+.resume {
+  display: flex;
+  max-width: 1000px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Left Panel */
+.left-panel {
+  width: 35%;
+  background: #08406e;
+  color: #fff;
+  padding: 20px;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile h1 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.profile p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.left-panel h2 {
+  font-size: 14px;
+  margin: 15px 0 10px;
+  border-bottom: 2px solid rgba(255,255,255,0.3);
+  padding-bottom: 5px;
+}
+
+.left-panel ul {
+  list-style: none;
+  margin: 10px 0;
+}
+
+.left-panel li {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.education-info{
+  font-size: 14px;
+}
+
+/* Right Panel */
+.right-panel {
+  width: 65%;
+  padding: 20px 30px;
+}
+
+.right-panel h2 {
+  font-size: 20px;
+  color: #0078d7;
+  margin-bottom: 10px;
+  padding-left: 8px;
+}
+
+.right-panel p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.right-panel ul {
+  margin-left: 20px;
+}
+
+.right-panel ul li {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+/* Section boxes */
+.right-panel div {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .resume {
+    flex-direction: column;
+  }
+  .left-panel,
+  .right-panel {
+    width: 100%;
+  }
+  .left-panel {
+    text-align: center;
+  }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form>
+        <h2>Registration Form</h2>
+
+        <label for="fname">First Name:</label>
+        <input type="text" id="fname" name="Fname" required>
+        <br><br>
+
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="Lname" required>
+        <br><br>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="Email" required>
+        <br><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="Phone" required>
+        <br><br>
+
+        <label for="city">City:</label>
+        <select id="city" name="City" required>
+            <option value="">Choose City</option>
+            <option value="Indore">Indore</option>
+            <option value="Bhopal">Bhopal</option>
+            <option value="Dewas">Dewas</option>
+            <option value="Betul">Betul</option>
+            <option value="Vidisha">Vidisha</option>
+        </select>
+        <br><br>
+
+        <label for="country">Country:</label>
+        <select id="country" name="Country" required>
+            <option value="">Choose Country</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="China">China</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Get Started</button>
+    </form>
+</body>
+</html>
