@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { text-align: center; }
+    .form { margin-bottom: 20px; }
+    input, select, button { padding: 8px; margin: 5px; }
+    ul { list-style: none; padding: 0; }
+    li { background: #f2f2f2; margin: 5px 0; padding: 10px; border-radius: 5px; }
+    canvas { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>💰 Expense Tracker</h1>
+  <div class="form">
+    <input type="text" id="category" placeholder="Category (Food, Travel)">
+    <input type="number" id="amount" placeholder="Amount (INR)">
+    <button onclick="addExpense()">Add Expense</button>
+    <button onclick="convertCurrency()">Convert to USD</button>
+  </div>
+
+  <ul id="expenseList"></ul>
+  <canvas id="chart" width="400" height="200"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let expenses = [];
+
+    function addExpense() {
+      let category = document.getElementById("category").value;
+      let amount = document.getElementById("amount").value;
+
+      if (category && amount) {
+        expenses.push({ category, amount: parseFloat(amount) });
+        displayExpenses();
+        updateChart();
+      }
+    }
+
+    function displayExpenses() {
+      let list = document.getElementById("expenseList");
+      list.innerHTML = "";
+      expenses.forEach(e => {
+        let li = document.createElement("li");
+        li.textContent = `${e.category}: ₹${e.amount}`;
+        list.appendChild(li);
+      });
+    }
+
+    async function convertCurrency() {
+      try {
+        let response = await fetch("https://api.exchangerate-api.com/v4/latest/INR");
+        let data = await response.json();
+        let usdRate = data.rates.USD;
+
+        expenses = expenses.map(e => ({
+          ...e,
+          amount: (e.amount * usdRate).toFixed(2)
+        }));
+
+        displayExpenses();
+        updateChart();
+      } catch (error) {
+        console.log("Currency API error:", error);
+      }
+    }
+
+    let chart;
+    function updateChart() {
+      let categories = expenses.map(e => e.category);
+      let amounts = expenses.map(e => e.amount);
+
+      if (chart) chart.destroy();
+      chart = new Chart(document.getElementById("chart"), {
+        type: "bar",
+        data: {
+          labels: categories,
+          datasets: [{
+            label: "Expenses",
+            data: amounts,
+            backgroundColor: "teal"
+          }]
+        }
+      });
+    }
+  </script>
+</body>
+</html>
